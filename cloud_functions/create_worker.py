@@ -21,6 +21,7 @@ def hello_world(request):
         family,
         datetime.date.today(),
         int(time.time()))
+    import_db = request.args['import_db']
 
     image_response = service.images().getFromFamily(
         project=project, family=family).execute()
@@ -74,6 +75,10 @@ def hello_world(request):
                 {
                     'key': 'task_id',
                     'value': task_id
+                },
+                {
+                    'key': 'import_db',
+                    'value': import_db
                 }
             ]
         }
